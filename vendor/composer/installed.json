@@ -706,17 +706,17 @@
     },
     {
         "name": "laravel/framework",
-        "version": "v5.5.33",
-        "version_normalized": "5.5.33.0",
+        "version": "v5.5.35",
+        "version_normalized": "5.5.35.0",
         "source": {
             "type": "git",
             "url": "https://github.com/laravel/framework.git",
-            "reference": "ef7880e665390f999f4def7c9f78133636f973cf"
+            "reference": "b0e15382ecf51a082ef8b2ae0d26f62972f6c3ce"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/laravel/framework/zipball/ef7880e665390f999f4def7c9f78133636f973cf",
-            "reference": "ef7880e665390f999f4def7c9f78133636f973cf",
+            "url": "https://api.github.com/repos/laravel/framework/zipball/b0e15382ecf51a082ef8b2ae0d26f62972f6c3ce",
+            "reference": "b0e15382ecf51a082ef8b2ae0d26f62972f6c3ce",
             "shasum": ""
         },
         "require": {
@@ -773,7 +773,7 @@
             "illuminate/translation": "self.version",
             "illuminate/validation": "self.version",
             "illuminate/view": "self.version",
-            "tightenco/collect": "self.version"
+            "tightenco/collect": "<5.5.33"
         },
         "require-dev": {
             "aws/aws-sdk-php": "~3.0",
@@ -806,7 +806,7 @@
             "symfony/dom-crawler": "Required to use most of the crawler integration testing tools (~3.3).",
             "symfony/psr-http-message-bridge": "Required to psr7 bridging features (~1.0)."
         },
-        "time": "2018-01-30T15:06:13+00:00",
+        "time": "2018-02-22T19:56:29+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -904,6 +904,54 @@
             "laravel",
             "psysh"
         ]
+    },
+    {
+        "name": "laravelnews/laravel-twbs4",
+        "version": "1.3.2",
+        "version_normalized": "1.3.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/laravelnews/laravel-twbs4.git",
+            "reference": "581c76b611be3e31b1516fa84a54a20e6883aeea"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/laravelnews/laravel-twbs4/zipball/581c76b611be3e31b1516fa84a54a20e6883aeea",
+            "reference": "581c76b611be3e31b1516fa84a54a20e6883aeea",
+            "shasum": ""
+        },
+        "require": {
+            "laravel/framework": "~5.5.0"
+        },
+        "time": "2018-02-09T15:56:24+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.3-dev"
+            },
+            "laravel": {
+                "providers": [
+                    "LaravelNews\\Presets\\BootstrapFour\\BootstrapPresetServiceProvider"
+                ]
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "LaravelNews\\Presets\\BootstrapFour\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Paul Redmond",
+                "email": "paulrredmond@gmail.com"
+            }
+        ],
+        "description": "Laravel 5 frontend preset for Twitter Bootstrap 4"
     },
     {
         "name": "league/flysystem",
@@ -1655,17 +1703,17 @@
     },
     {
         "name": "phpspec/prophecy",
-        "version": "1.7.3",
-        "version_normalized": "1.7.3.0",
+        "version": "1.7.5",
+        "version_normalized": "1.7.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/phpspec/prophecy.git",
-            "reference": "e4ed002c67da8eceb0eb8ddb8b3847bb53c5c2bf"
+            "reference": "dfd6be44111a7c41c2e884a336cc4f461b3b2401"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/phpspec/prophecy/zipball/e4ed002c67da8eceb0eb8ddb8b3847bb53c5c2bf",
-            "reference": "e4ed002c67da8eceb0eb8ddb8b3847bb53c5c2bf",
+            "url": "https://api.github.com/repos/phpspec/prophecy/zipball/dfd6be44111a7c41c2e884a336cc4f461b3b2401",
+            "reference": "dfd6be44111a7c41c2e884a336cc4f461b3b2401",
             "shasum": ""
         },
         "require": {
@@ -1677,9 +1725,9 @@
         },
         "require-dev": {
             "phpspec/phpspec": "^2.5|^3.2",
-            "phpunit/phpunit": "^4.8.35 || ^5.7"
+            "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.5"
         },
-        "time": "2017-11-24T13:59:53+00:00",
+        "time": "2018-02-19T10:16:54+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1979,17 +2027,17 @@
     },
     {
         "name": "phpunit/phpunit",
-        "version": "6.5.6",
-        "version_normalized": "6.5.6.0",
+        "version": "6.5.7",
+        "version_normalized": "6.5.7.0",
         "source": {
             "type": "git",
             "url": "https://github.com/sebastianbergmann/phpunit.git",
-            "reference": "3330ef26ade05359d006041316ed0fa9e8e3cefe"
+            "reference": "6bd77b57707c236833d2b57b968e403df060c9d9"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3330ef26ade05359d006041316ed0fa9e8e3cefe",
-            "reference": "3330ef26ade05359d006041316ed0fa9e8e3cefe",
+            "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/6bd77b57707c236833d2b57b968e403df060c9d9",
+            "reference": "6bd77b57707c236833d2b57b968e403df060c9d9",
             "shasum": ""
         },
         "require": {
@@ -2028,7 +2076,7 @@
             "ext-xdebug": "*",
             "phpunit/php-invoker": "^1.1"
         },
-        "time": "2018-02-01T05:57:37+00:00",
+        "time": "2018-02-26T07:01:09+00:00",
         "bin": [
             "phpunit"
         ],
@@ -3769,24 +3817,24 @@
     },
     {
         "name": "symfony/thanks",
-        "version": "v1.0.5",
-        "version_normalized": "1.0.5.0",
+        "version": "v1.0.6",
+        "version_normalized": "1.0.6.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/thanks.git",
-            "reference": "c757ee0c9dcfcc0e9e30fbbbdcadeb9dcc9aaaf4"
+            "reference": "9474ce305253c2f0bc20322ff8e9973cf25c9a94"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/thanks/zipball/c757ee0c9dcfcc0e9e30fbbbdcadeb9dcc9aaaf4",
-            "reference": "c757ee0c9dcfcc0e9e30fbbbdcadeb9dcc9aaaf4",
+            "url": "https://api.github.com/repos/symfony/thanks/zipball/9474ce305253c2f0bc20322ff8e9973cf25c9a94",
+            "reference": "9474ce305253c2f0bc20322ff8e9973cf25c9a94",
             "shasum": ""
         },
         "require": {
             "composer-plugin-api": "^1.0",
             "php": "^5.5.9|^7.0.0"
         },
-        "time": "2018-01-26T10:44:34+00:00",
+        "time": "2018-02-02T13:47:40+00:00",
         "type": "composer-plugin",
         "extra": {
             "branch-alias": {

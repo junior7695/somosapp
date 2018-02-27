@@ -1,37 +1,17 @@
 <?php
-
-/*Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/usuarios', function(){
-	return ('Usuarios');
-});
-Route::get('/usuarios/{id}', function($id){
-	return "Mostrano detalle del usuario: {$id}";
-});
-
-Route::get('/login', 'LoginController@login')->name('login.login');
-Route::post('/login', 'LoginController@store')->name('login.store');
-/*Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');*/
-
-Route::resource('/crear','CrearUsuariosController');
-
-// Rutas del proyecto ROLES y PERMISOS
-
+// Vista Principal
 Route::get('/',function(){
 	return view('welcome');
 });
 
+// Inicio de Sesion
 Auth::routes();
-
-Route::post('otp','OTPController@enviar');
-
-		
 Route::get('home', 'HomeController@index')->name('home');//->middleware('permission:home');
+//Inicio de Sesion OTP
+Route::get('/key', 'SolicitarClaveController@index')->name('key.index');
+Route::post('/key','SolicitarClaveController@create')->name('key.solicitar');
 
+// Roles y Permisos
 Route::middleware(['auth'])->group(function(){
 
 	Route::post('roles/store', 'RoleController@store')->name('roles.store')
@@ -54,10 +34,9 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::get('roles/{role}/edit', 'RoleController@edit')->name('roles.edit')
 		->middleware('permission:roles.edit');
-
-
-
-
-
-
 });
+// Fin Roles y Permisos
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+

@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Caffeinated\Shinobi\Models\Role;
-use Caffeinated\Shinobi\Models\Permission;
 
 class HomeController extends Controller
 {
@@ -25,7 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //$permissions = permission::get();
         return view('home');
     }
 }
