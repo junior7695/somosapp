@@ -7,7 +7,7 @@
         <ul class="list-unstyled">
               @can('roles.index')
               <li>
-                <a href="#submenu1" data-toggle="collapse" class="py-5"><i class="fa fa-fw fa-address-card"></i> ROLES</a>
+                <a href="#submenu1" data-toggle="collapse" class="py-5"><i class="fas fa-arrow-down"></i> ROLES</a>
                 <ul id="submenu1" class="list-unstyled collapse">
                     <li><a href="#">MOSTRAR</a></li>
                     <li><a href="#">CREAR</a></li>
