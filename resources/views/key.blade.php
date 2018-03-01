@@ -21,6 +21,7 @@
                                         type="email"
                                         class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
                                         name="email"
+                                        placeholder="Indica tu Correo"
                                         value="{{ old('email') }}"
                                         required
                                         autofocus

@@ -18,8 +18,8 @@
 <div id="app">
     <nav class="navbar navbar-expand-lg navbar-light bg-danger">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('', 'SomosVenezuela') }}
+            <a class="navbar-brand text-white" href="{{ url('/') }}">
+               <b>Somos</b>Venezuela
             </a>
             
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -31,10 +31,10 @@
 
                 <ul class="navbar-nav">
                     @if (Auth::guest())
-                        <li class="nav-item"><a href="{{ route('key.index') }}" class="nav-link">Inicio</a></li>
+                        <li class="nav-item"><a href="{{ route('key.index') }}" class="nav-link text-white">ENTRAR</a></li>
                     @else
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            <a href="#" class="nav-link dropdown-toggle text-white" id="navbarDropdownMenuLink" data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false">
                                 {{ Auth::user()->name }}
                             </a>

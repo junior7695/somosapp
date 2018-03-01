@@ -8,14 +8,13 @@
     <title>Laravel</title>
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
+   <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet"> 
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <!-- Styles -->
     <style>
         html, body {
-            background-color: #fff;
-            color: #636b6f;
-            font-family: 'Raleway', sans-serif;
+            font-family: 'Indie Flower', sans-serif;
             font-weight: 100;
             height: 100vh;
             margin: 0;
@@ -43,53 +42,65 @@
 
         .content {
             text-align: center;
-        }
-
-        .title {
             font-size: 84px;
-        }
 
+        }
         .links > a {
-            color: #636b6f;
+            color: #212529;;
             padding: 0 25px;
-            font-size: 12px;
+            font-size: 16px;
             font-weight: 600;
             letter-spacing: .1rem;
             text-decoration: none;
             text-transform: uppercase;
         }
-
-        .m-b-md {
-            margin-bottom: 30px;
+       
+         p{
+            font-size: 100px;
+            letter-spacing: .12rem;
+            font-weight: 600;
+            color: #891414b3;
+            text-shadow: 2px 4px #001240;
+            -moz-transition: all 1.5s ease;
+            -ms-transition: all 1.2s ease;
+            transition: all 1.6s ease;
+            
+         }
+         p:hover{
+            -moz-transform: scale(1.2);
+            -webkit-transform: scale(1.2);
+            -o-transform: scale(1.2);
+            -ms-transform: scale(1.2);
+            transform: scale(1.2);
         }
+
+
+        
     </style>
 </head>
 <body>
-    <div class="flex-center position-ref full-height">
+    <div class="flex-center position-ref full-height fondo">
         @if (Route::has('login'))
             <div class="top-right links">
                 @auth
-                    <a href="{{ url('/home') }}">Pagina Principal</a>
+                    <a href="{{ url('/home') }}" class="text-white btn btn-outline-info btn-lg">Pagina Principal</a>
                     @else
                         <a href="{{ route('key.index') }}">Entrar</a>
                        
-                    @endauth
+                        @endauth
             </div>
         @endif
 
-        <div class="content">
-            <div class="title m-b-md">
-                <strong>Somos</strong>Venezuela
-            </div>
+    <div class="container-fluid content title">
+        
+        <p>
+            <b>Somos</b></a>Venezuela
+        </p>
 
-            <div class="links">
-                <a href="">#</a>
-                <a href="">#</a>
-                <a href="">#</a>
-                <a href="">#</a>
-                <a href="">#</a>
-            </div>
-        </div>
+    </div>
+
+            
+    
     </div>
 </body>
 </html>
