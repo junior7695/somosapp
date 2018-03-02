@@ -1,15 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-      <div class="alert alert-warning text-lead text-center mt-5" role="alert">
-        @if (session()->has('info'))
-            {{ session('info') }}
-        @endif
-        @if (Auth::check())
-            {{ Auth::user()->name }}
-        @endif
+    
+      
+    @if (session()->has('info'))
+    <div class="container alert-success text-center text-uppercase w-50 py-4">
+        {{ session('info') }}
     </div>
+    @endif
     
     <div class="row justify-content-md-center mt-5">
         <div class="col-md-8">

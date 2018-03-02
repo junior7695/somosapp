@@ -8,9 +8,10 @@
     <title>Laravel</title>
 
     <!-- Fonts -->
-   <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet"> 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    
     <!-- Styles -->
     <style>
         html, body {
@@ -20,31 +21,12 @@
             margin: 0;
         }
 
-        .full-height {
-            height: 100vh;
-        }
-
-        .flex-center {
-            align-items: center;
-            display: flex;
-            justify-content: center;
-        }
-
-        .position-ref {
-            position: relative;
-        }
-
         .top-right {
             position: absolute;
             right: 10px;
             top: 18px;
         }
 
-        .content {
-            text-align: center;
-            font-size: 84px;
-
-        }
         .links > a {
             color: #212529;;
             padding: 0 25px;
@@ -79,22 +61,22 @@
     </style>
 </head>
 <body>
-    <div class="flex-center position-ref full-height fondo">
+    <div class="d-flex align-items-center fondo">
         @if (Route::has('login'))
             <div class="top-right links">
                 @auth
-                    <a href="{{ url('/home') }}" class="text-white btn btn-outline-info btn-lg">Pagina Principal</a>
+                    <a href="{{ url('/home') }}" class="text-dark btn btn-outline-info btn-lg active">Pagina Principal</a>
                     @else
-                        <a href="{{ route('key.index') }}">Entrar</a>
+                        <a href="{{ route('key.index') }}" class="text-dark btn btn-outline-info btn-lg active">Entrar</a>
                        
                         @endauth
             </div>
         @endif
 
-    <div class="container-fluid content title">
+    <div class="container d-flex justify-content-center">
         
         <p>
-            <b>Somos</b></a>Venezuela
+            <b class="text-uppercase">Somos</b></a>Venezuela
         </p>
 
     </div>
@@ -102,5 +84,7 @@
             
     
     </div>
+
+<script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
