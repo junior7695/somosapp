@@ -61,7 +61,7 @@
     </style>
 </head>
 <body>
-    <div class="d-flex align-items-center fondo">
+    <div class="d-flex align-items-center justify-content-sm-center fondo">
         @if (Route::has('login'))
             <div class="top-right links">
                 @auth
@@ -73,13 +73,17 @@
             </div>
         @endif
 
-    <div class="container d-flex justify-content-center">
-        
-        <p>
-            <b class="text-uppercase">Somos</b></a>Venezuela
-        </p>
+   
+        <p class="d-none d-sm-block text-center">
+            <b>Somos</b>
+            Venezuela
 
-    </div>
+        </p>
+        
+        <p class="d-block d-sm-none text-center">
+            <b>SOMOS VE</b>
+        </p>
+    
 
             
     
