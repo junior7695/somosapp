@@ -1,3 +1,12 @@
+
+.fondo{
+    background: url("../img/Venezuela.jpg");
+    background-size: cover;
+    background-position: center; 
+    height: 100vh;
+}
+
+
 .navbar-dark .navbar-nav .nav-link, .navbar-dark .navbar-text {
     color: rgba(255, 255, 255, .75);
 }
@@ -55,16 +64,3 @@
     line-height: 1.2;
 }
 
-@media (max-width: 768px) {
-    .sidebar {
-        margin-left: -250px;
-    }
-    .sidebar.toggled {
-        margin-left: 0;
-    }
-} {
-    min-width: 250px;
-    max-width: 250px;
-    min-height: calc(100vh - 56px);
-    transition: all 0.3s;
-}

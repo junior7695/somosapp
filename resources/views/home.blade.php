@@ -7,7 +7,7 @@
         <ul class="list-unstyled">
               @can('roles.index')
               <li>
-                <a href="#submenu1" data-toggle="collapse" class="py-5"><i class="fa fa-fw fa-address-card"></i> ROLES</a>
+                <a href="#submenu1" data-toggle="collapse" class="py-5"><i class="fas fa-arrow-down"></i> ROLES</a>
                 <ul id="submenu1" class="list-unstyled collapse">
                     <li><a href="#">MOSTRAR</a></li>
                     <li><a href="#">CREAR</a></li>
@@ -17,9 +17,11 @@
             <li>
                 <a href="#submenu2" data-toggle="collapse" class="py-5"><i class="fa fa-fw fa-address-card"></i> USUARIOS</a>
                 <ul id="submenu2" class="list-unstyled collapse">
-                    <li><a href="#">MOSTRAR</a></li>
-                    <li><a href="#">Actualizar</a></li>
-                    <li><a href="#">ELIMINAR</a></li>
+                    <li><a href="{{ route('users.create') }}">CREAR</a></li>
+                    <li><a href="{{ route('users.index') }}">MOSTRAR</a></li>
+                  
+                  <!--  <li><a href="">ACTUALIZAR</a></li> -->
+                  
                 </ul>
             </li>
 
@@ -47,20 +49,8 @@
       <a class="sidebar-toggle text-light mr-3 btn btn-dark">Toogle</i></a> 
      -->
     
-    <h1 class="display-5 mt-5 mb-5 text-center text-muted">Bienvenido {{ Auth::user()->name }} </h1>
-    <div class="d-flex justify-content-center my-5 py-5">
-        <div class="text-center">
-            <nav class="navbar navbar-light bg-light">
-                <form class="form-inline ">
-                    <label for="" class="mr-2 text-muted">CONSULTAR</label>
-                    <input class="form-control mr-sm-2" type="search" placeholder="Cedula Beneficiario" aria-label="Search">
-                        <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Buscar</button>
-                 </form>
-   </nav>
-    
-        </div>
-    
-    </div>
+    <h1 class="display-5 my-5 text-center lead">Bienvenido {{ Auth::user()->name }} </h1>
+  
 
   @yield('principal')
     
