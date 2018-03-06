@@ -1,7 +1,13 @@
-@extends('layouts.app')
+@extends('home')
 
-@section('content')
+@section('principal')
+
 <div class="container">
+
+@if(session()->has('info'))
+    <div class="alert alert-warning text-lead text-center mt-5" role="alert">{{ session('info') }}
+    </div>
+@endif
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">

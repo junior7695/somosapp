@@ -43,7 +43,7 @@ class RoleController extends Controller
 
         $role->permissions()->sync($request->get('permissions'));
 
-        return redirect()->route('roles.edit', $role->id)
+        return redirect()->route('roles.index', $role->id)
             ->with('info', 'Rol guardado con éxito');
     }
 
@@ -56,8 +56,9 @@ class RoleController extends Controller
     public function show($id)
     {
          $role = Role::find($id);
+         $permissions = $role->permissions;
 
-        return view('roles.show', compact('role'));
+        return view('roles.show', compact('role','permissions'));
     }
 
     /**
@@ -89,8 +90,8 @@ class RoleController extends Controller
 
         $role->permissions()->sync($request->get('permissions'));
 
-        return redirect()->route('roles.edit', $role->id)
-            ->with('info', 'Rol guardado con éxito');
+        return redirect()->route('roles.index', $role->id)
+            ->with('info', 'Rol "'.$role->name.'" guardado con éxito.');
     }
 
     /**
@@ -105,4 +106,5 @@ class RoleController extends Controller
 
         return back()->with('info', 'Eliminado correctamente');
     }
+
 }

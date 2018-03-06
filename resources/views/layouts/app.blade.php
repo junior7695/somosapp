@@ -12,13 +12,19 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('/assets/css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('/assets/css/fontawesome-all.min.css') }}" rel="stylesheet">
     
 </head>
 <body>
+    <div class="">
+        <img src="{{ asset('img/top.png') }}" alt="Responsive image" class="img-fluid">
+    </div>
 <div id="app">
-    <nav class="navbar navbar-expand-lg navbar-light bg-danger">
+    <nav class="navbar navbar-expand-lg navbar-light bg-nav sticky-top">
         <div class="container">
+             <a class="sidebar-toggle text-light mr-3"><i class="fas fa-angle-double-down fa-2x"></i></a>
+
             <a class="navbar-brand text-white" href="{{ url('/') }}">
                <b>Somos</b>Venezuela
             </a>
@@ -32,16 +38,16 @@
 
                 <ul class="navbar-nav">
                     @if (Auth::guest())
-                        <li class="nav-item"><a href="{{ route('key.index') }}" class="nav-link text-white">ENTRAR</a></li>
+                        <li class="nav-item"><a href="{{ route('key.index') }}" class="nav-link text-white text-center"><b>ENTRAR</b></a></li>
                     @else
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle text-white" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false">
+                            <a href="#" class="nav-link dropdown-toggle text-white text-center text-capitalize text-light" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-2x mr-1"></i>
                                 {{ Auth::user()->name }}
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                <a href="{{ route('logout') }}" class="dropdown-item"
-                                   onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                <a href="{{ route('logout') }}" 
+                                   onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="dropdown-item text-capitalize text-center">
                                     Salir
                                 </a>
 
@@ -64,5 +70,6 @@
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('assets/js/bsadmin.js') }}"></script>
 </body>
 </html>

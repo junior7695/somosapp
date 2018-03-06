@@ -5,10 +5,10 @@
 <div class="container">
   
    <div class="row justify-content-md-center mt-5">
-        <div class="col-md-8">
+        <div class="col-md-5">
             <div class="card">
-                <div class="card-header lead">Solicitar Contraseña</div>
-                <div class="card-body">
+                <div class="card-header lead text-center mb-5 bg-danger text-white"><b>Solicitar Contraseña</b></div>
+                <div class="card-body bg-light">
                     <form class="form-horizontal" method="POST" action="{{ route('key.solicitar') }}">
                         {{ csrf_field() }}
 
@@ -36,7 +36,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-lg-6 offset-lg-4">
+                            <div class="col-lg-6 offset-lg-4 mt-3">
                                 <button type="submit" class="btn btn-outline-danger btn-block">
                                     Solicitar Clave
                                 </button>

@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>SomosVenezuela</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet"> 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    
     
     <!-- Styles -->
     <style>
@@ -20,6 +20,13 @@
             height: 100vh;
             margin: 0;
         }
+        .fondo{
+    background: url("img/Venezuela.jpg");
+    background-size: cover;
+    background-position: center; 
+    height: 100vh;
+}
+
 
         .top-right {
             position: absolute;
@@ -81,7 +88,7 @@
         </p>
         
         <p class="d-block d-sm-none text-center">
-            <b>SOMOS VE</b>
+            <img src="{{ asset('img/logoSomos.gif') }}" alt="logo" class="img-fluid">
         </p>
     
 

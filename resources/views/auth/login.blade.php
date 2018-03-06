@@ -4,7 +4,7 @@
     
       
     @if (session()->has('info'))
-    <div class="container alert-success text-center text-uppercase w-50 py-4">
+    <div class="container alert-success text-center text-capitalize w-50 py-4 mt-2">
         {{ session('info') }}
     </div>
     @endif

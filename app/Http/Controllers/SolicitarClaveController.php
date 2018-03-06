@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use DB;
 use App\User;
 use Validator;
@@ -44,16 +45,16 @@ class SolicitarClaveController extends Controller
       $user = User::where('email',$email)->update([
               'password' => bcrypt($code)
       ]);
-      //$dates = array('name'=> $data['name'],'code' => $code);
-      //$this->Email($dates,$email);
-        return redirect()->route('login')->with('info','La clave es creada es ' . $code);
+      $dates = array('name'=> $request['name'],'code' => $code);
+      $this->Email($dates,$email);
+        return redirect()->route('login')->with('info','Tu clave fue enviada al corredo ' . $email);
     }
     function Email($dates,$email){
-      /*Mail::send('emails.plantilla',$dates, function($message) use ($email){
+      Mail::send('emails.plantilla',$dates, function($message) use ($email){
         $message->subject('Bienvenido a la plataforma');
         $message->to($email);
         $message->from('no-repply@prueba.com.ve','prueba');
-      });*/
-      return "listo";
+      });
+      
     }
 }

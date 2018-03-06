@@ -15,10 +15,10 @@
 }
 
 .sidebar {
-    min-width: 250px;
-    max-width: 250px;
+    min-width: 200px;
+    max-width: 200px;
     min-height: calc(100vh - 56px);
-    transition: all 0.3s;
+    transition: all 0.9s;
 }
 .sidebar ul li a {
     display: block;

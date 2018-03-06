@@ -1,9 +1,11 @@
 @extends('home')
 
 @section('principal')
-<table class="table table-striped">
+<div class="container-fluid">
+	<div class="row table-responsive-sm">
+		<table class="table table-striped table-bordered">
 		<tr>
-			<th>ID</th>
+			<th class="d-none d-sm-block">ID</th>
 			<th>Name</th>
 			<th>Email</th>
 			<th>Telefono</th>
@@ -11,14 +13,14 @@
 		</tr>
 		@foreach($users as $user)
 			<tr>
-				<td>{{ $user->id}}</td>
+				<td class="d-none d-sm-block">{{ $user->id}}</td>
 				<td>{{ $user->name }}</td>
 				<td>{{ $user->email }}</td>
 				<td>{{ $user->tlf}}</td>
 				<td>
 					<div class="row">
 					
-						<a href="{{ route('users.edit', $user->id ) }}" class="btn btn-outline-warning mr-2"> Editar</a>
+						<a href="{{ route('users.edit', $user->id ) }}" class="btn btn-outline-warning mx-2"> Editar</a>
 
 					<form action="{{ route("users.destroy", $user->id) }}" method="POST">
 
@@ -35,4 +37,8 @@
 			</tr>
 		@endforeach
 	</table>
+	</div>
+	
+</div>
+
 @endsection

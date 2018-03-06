@@ -7,6 +7,9 @@ Route::get('/',function(){
 // Inicio de Sesion
 Auth::routes();
 Route::get('home', 'HomeController@index')->name('home');
+
+
+
 //Inicio de Sesion OTP
 Route::get('/key', 'SolicitarClaveController@index')->name('key.index');
 Route::post('/key','SolicitarClaveController@create')->name('key.solicitar');
@@ -37,7 +40,9 @@ Route::middleware(['auth'])->group(function(){
 });
 // Fin Roles y Permisos
 
+
 // Inicio CRUD  Usuarios 
 Route::resource('/users', 'UsersController');
+
 
 
