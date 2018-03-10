@@ -2,73 +2,52 @@
 
 @section('principal')
 
-<div class="container">
+<div class="container-fluid">
+
 
 @if(session()->has('info'))
     <div class="alert alert-warning text-lead text-center mt-5" role="alert">{{ session('info') }}
-    </div>
+    </div> 
 @endif
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Roles
-                    @can('roles.create')
-                    <a href="{{ route('roles.create') }}" 
-                    class="btn btn-sm btn-primary pull-right">
-                        Crear
-                    </a>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Acción</th> 
+                </tr>
+            </thead>
+            @foreach($roles as $role)
+            <tbody>
+                <tr>
+                    <td>{{ $role->id }}</td>
+                    <td>{{ $role->name }}</td>
+                    <td>{{ $role->description }}</td>
+                    <td>
+                        <div class="col row">
+                    @can('roles.show')
+                        <a href="{{ route('roles.show', $role->id) }}" class="btn btn-outline-primary">ver</a>
                     @endcan
-                </div>
+                    @can('roles.edit')
+                        <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-outline-warning mr-2 ml-2">editar</a>
+                    @endcan
+                    @can('roles.destroy')
+                        <form action="{{ route('roles.destroy', $role->id) }}" method='POST'>
 
-                <div class="panel-body">
-                    <table class="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th width="10px">ID</th>
-                                <th>Nombre</th>
-                                <th colspan="3">&nbsp;</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($roles as $role)
-                            <tr>
-                                <td>{{ $role->id }}</td>
-                                <td>{{ $role->name }}</td>
-                                @can('roles.show')
-                                <td width="10px">
-                                    <a href="{{ route('roles.show', $role->id) }}" 
-                                    class="btn btn-sm btn-default">
-                                        ver
-                                    </a>
-                                </td>
-                                @endcan
-                                @can('roles.edit')
-                                <td width="10px">
-                                    <a href="{{ route('roles.edit', $role->id) }}" 
-                                    class="btn btn-sm btn-default">
-                                        editar
-                                    </a>
-                                </td>
-                                @endcan
-                                @can('roles.destroy')
-                                <td width="10px">
-                                    <form action="{{ route('roles.destroy', $role->id) }}" method='POST'>
-
-                                    <input class="btb btn-primary" type="submit" value="Eliminar">
-                                {{ method_field('DELETE') }}
-                                {{ csrf_field() }}
-                                     </form>
-                                </td>
-                                @endcan
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    {{ $roles->render() }}
-                </div>
-            </div>
-        </div>
+                        <input class="btn btn-outline-danger" type="submit" value="Eliminar">
+                        {{ method_field('DELETE') }}
+                        {{ csrf_field() }}
+                        </form>
+                    @endcan
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+            @endforeach
+        </table>
+    {!! $roles->render() !!}      
     </div>
 </div>
 @endsection

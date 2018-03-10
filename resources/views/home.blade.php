@@ -3,27 +3,33 @@
 @section('content')
 
 <div class="d-flex align-items-stretch">
-    <div class="sidebar bg-dark">
-         <ul class="list-unstyled">
+    <div class="sidebar bg-sidebar">
+        <ul class="list-unstyled text-dark">
               @can('roles.index')
               <li>
-                <a href="#submenu1" data-toggle="collapse" class="py-5">ROLES</a>
+                <a href="#submenu1" data-toggle="collapse" class="py-3"><i class="fa fa-fw fa-address-card"></i> ROLES</a>
                 <ul id="submenu1" class="list-unstyled collapse">
-                    <li><a href="{{ route('roles.index') }}">MOSTRAR</a></li>
-                    <li><a href="#">CREAR</a></li>
+                  @can('roles.create')
+                    <li><a href="{{ route('roles.create') }}"><i class="fas fa-plus mr-2"></i> CREAR</a></li>
+                  @endcan
+                    <li><a href="{{ route('roles.index') }}"><i class="fas fa-eye mr-2"></i> MOSTRAR</a></li>
                 </ul>
             </li>
             @endcan
-            <li >
-                <a href="#submenu2" data-toggle="collapse" class="py-5"><i class="fas fa-users fa-2x mr-2"></i>  USUARIOS</a>
+            <li>
+              @can('users.index')
+                <a href="#submenu2" data-toggle="collapse" class="py-3"><i class="fa fa-fw fa-address-card"></i> USUARIOS</a>
                 <ul id="submenu2" class="list-unstyled collapse">
-                    <li><a href="{{ route('users.create') }}"><i class="fas fa-plus fa-2x mr-3"></i> CREAR</a></li>
-                    <li><a href="{{ route('users.index') }}"><i class="fas fa-eye fa-2x mr-3"></i>MOSTRAR</a></li>
-                   </ul>
+                  @can('users.create')
+                    <li><a href="{{ route('users.create') }}"><i class="fas fa-plus mr-2"></i> CREAR</a></li>
+                  @endcan
+                    <li><a href="{{ route('users.index') }}"><i class="fas fa-eye mr-2"></i>MOSTRAR</a></li>
+                </ul>
             </li>
+            @endcan
 
             <li>
-                <a href="#submenu3" data-toggle="collapse" class="py-5">BENEFICIARIO</a>
+                <a href="#submenu3" data-toggle="collapse" class="py-3"><i class="fa fa-fw fa-address-card"></i> BENEFICIARIO</a>
                 <ul id="submenu3" class="list-unstyled collapse">
                     <li><a href="#">MOSTRAR</a></li>
                     <li><a href="#">CONSULTAR</a></li>
@@ -33,13 +39,12 @@
             <li>
                 
             </li>
-            <li><a href="#" class="py-5">PERFIL </a></li>
-            <li><a href="#" class="py-5">REPORTES </a></li>
+            <li><a href="{{ route('users.perfil', Auth::user()->id) }}" class="py-3"><i class="fa fa-fw fa-link"></i> PERFIL </a></li>
+            <li><a href="#" class="py-3"><i class="fa fa-fw fa-link"></i> REPORTES </a></li>
             
             
             
         </ul>
-
     </div>
 
     <div class="container mt-2">
@@ -63,9 +68,7 @@
 
   <div class="card-body bg-success text-center bg-nav">
     <blockquote class="blockquote mb-0">
-      <p>Compañía Anónima Nacional Teléfonos de Venezuela.</p>
-      <footer class="blockquote-footer text-white"> RIF: J-00124134-5.- Todos los derechos reservados</footer>
-       <cite title="Source Title" class="text-dark"><b>Somos</b>Venezuela</cite>
+      <footer class="blockquote-footer text-white"> Compañía Anónima Nacional Teléfonos de Venezuela. RIF: J-00124134-5.- Todos los derechos reservados</footer>
     </blockquote>
   </div>
 

@@ -1,14 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-
-<div class="container">
+        @if (session()->has('status'))
+    <div class="container alert-success text-center text-uppercase w-50 py-4" role="alert">
+    {{ session('status') }}
+    </div>
+    @endif  
   
-   <div class="row justify-content-md-center mt-5">
+   <div class="row justify-content-md-center mt-5 py-5">
         <div class="col-md-5">
-            <div class="card">
-                <div class="card-header lead text-center mb-5 bg-danger text-white"><b>Solicitar Contraseña</b></div>
-                <div class="card-body bg-light">
+            <div class="card rounded">
+                <div class="card-header display-5 pb-3 bg-login rounded d-flex align-items-center justify-content-md-center"><b>Solicitar Contraseña</b></div>
+                <div class="card-body bg-login pt-5 rounded">
                     <form class="form-horizontal" method="POST" action="{{ route('key.solicitar') }}">
                         {{ csrf_field() }}
 
@@ -36,8 +39,8 @@
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-lg-6 offset-lg-4 mt-3">
-                                <button type="submit" class="btn btn-outline-danger btn-block">
+                            <div class="col-lg-6 offset-lg-4 mt-3">                        
+                                <button type="submit" class="btn btn-outline-danger btn-block" data-toggle="modal" data-target="#correo">
                                     Solicitar Clave
                                 </button>
                             </div>

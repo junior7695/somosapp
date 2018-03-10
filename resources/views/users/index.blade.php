@@ -1,6 +1,11 @@
 @extends('home')
 
 @section('principal')
+	@if (session()->has('status'))
+    <div class="container alert-success text-center text-uppercase w-50 py-4" role="alert">
+    {{ session('status') }}
+    </div>
+    @endif 
 <div class="container-fluid">
 	<div class="row table-responsive-sm">
 		<table class="table table-striped table-bordered">
@@ -24,7 +29,7 @@
 
 					<form action="{{ route("users.destroy", $user->id) }}" method="POST">
 
-						<input class="btn btn-outline-danger" type="submit" value="Elminiar">
+		             <input class="btn btn-outline-danger" type="submit" value="Elminiar">
 						
 						{{ method_field('DELETE') }}
 						{{ csrf_field() }}
@@ -37,6 +42,11 @@
 			</tr>
 		@endforeach
 	</table>
+	
+	<div class="container d-flex justify-content-center display-5">
+		{{ $users->render() }}
+		
+	</div>
 	</div>
 	
 </div>

@@ -3,6 +3,7 @@
 @section('principal')
 
     
+    
     @if (session()->has('status'))
     <div class="container alert-success text-center text-uppercase w-50 py-4" role="alert">
     {{ session('status') }}

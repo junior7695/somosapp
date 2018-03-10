@@ -1,22 +1,20 @@
 @extends('home')
 
 @section('principal')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Rol</div>
 
-                <div class="panel-body">                                        
-                    <p><strong>Nombre</strong>     {{ $role->name }}</p>
-                    <p><strong>Descripción</strong>  {{ $role->description }}</p>
-                </div>
-            </div>
-            <table class="table table-striped table-hover">
-            <thead>
+<div class="container mb-5">
+    <h1 class="text-center text-muted text-uppercase">rol <code>{{ $role->name }}</code></h1>
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
+        
+        <hr>
+        <h2><strong>Descripción del Rol: </strong></h2>
+        <h3>{{ $role->description }}</h3>
+        <hr>
+        <table class="table table-bordered table-success">
+            <thead class="thead-dark">
                             <tr>
                                 <th>Permisos</th>
-                                <th colspan="3">&nbsp;</th>
                             </tr>
             </thead>
             <tbody>
@@ -26,12 +24,14 @@
                     <td>
                         <li>{{ $permission-> name }}
                         </li>
+                        <em>{{ $permission-> description }}
                     </td>
                 </tr>
                 @endforeach
                 </ul>
             </tbody>
             </table>
+
         </div>
     </div>
 </div>

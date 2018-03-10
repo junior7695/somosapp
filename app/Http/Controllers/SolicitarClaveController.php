@@ -15,8 +15,17 @@ class SolicitarClaveController extends Controller
       return view('key');
           }
 
+      // Funcion que genera el codigo aleatorio para la plantilla
+      function plantilla($longitud) {
+          $key = '';
+          $pattern = '12345';
+          $max = strlen($pattern)-1;
+          for($i=0;$i < $longitud;$i++) $key .= $pattern{mt_rand(0,$max)};
+          return $key;
+     }
+     //** Fin funcion plantilla
 
-     //Funcion que genera el codigo //
+     //Funcion que genera el codigo para el email //
          function generarCodigo($longitud) {
           $key = '';
           $pattern = '1234567890abcdefghijklmnopqrstuvwxyz';
@@ -24,7 +33,7 @@ class SolicitarClaveController extends Controller
           for($i=0;$i < $longitud;$i++) $key .= $pattern{mt_rand(0,$max)};
           return $key;
      }
-     //Fin de la funcion//
+     //Fin de la funcion email
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -41,19 +50,36 @@ class SolicitarClaveController extends Controller
     protected function create(Request $request)
     {
       $email = $request->email;
-      $code = $this->generarCodigo(6);
+      
+      if (User::where('email',$email)->exists()) {
+
+        $code = $this->generarCodigo(6);
       $user = User::where('email',$email)->update([
               'password' => bcrypt($code)
       ]);
+      
+      // ** Elimina la sesion si la seccion esta activa **
+      $user_id = User::where('email',$email)->first();
+      DB::table('sessions')->where('user_id',$user_id->id)->delete();
+
+
+      // ** Correo ** 
       $dates = array('name'=> $request['name'],'code' => $code);
       $this->Email($dates,$email);
-        return redirect()->route('login')->with('info','Tu clave fue enviada al corredo ' . $email);
+        return redirect()->route('login')->with('info','Tu clave fue enviada al corredo ' . $email.' '.$code);
+
+      }else{
+
+        return back()->with('status','El correo '.$email. ' no esta resgistrado, por favor contacte a su administrador encargado');
+      }
+
+      
     }
     function Email($dates,$email){
       Mail::send('emails.plantilla',$dates, function($message) use ($email){
         $message->subject('Bienvenido a la plataforma');
         $message->to($email);
-        $message->from('no-repply@prueba.com.ve','prueba');
+        $message->from('no-repply@SomosVenezuela.com.ve','SomosVenezuela');
       });
       
     }

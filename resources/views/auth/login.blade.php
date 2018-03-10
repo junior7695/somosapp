@@ -9,11 +9,12 @@
     </div>
     @endif
     
-    <div class="row justify-content-md-center mt-5">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header lead">Inicio</div>
-                <div class="card-body">
+    <div class="container">
+        <div class="row justify-content-md-center mt-5 py-5">
+        <div class="col-md-5">
+            <div class="card rounded">
+                <div class="card-header display-5 pb-3 bg-login rounded d-flex align-items-center justify-content-md-center">Inicio</div>
+                <div class="card-body bg-login pt-5 rounded">
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
@@ -74,5 +75,7 @@
             </div>
         </div>
     </div>
+    </div>
+    
 </div>
 @endsection
