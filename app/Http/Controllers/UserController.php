@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Caffeinated\Shinobi\Models\Role;
+use Caffeinated\Shinobi\Models\Permission;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -17,8 +20,16 @@ class UserController extends Controller
     {
         
        // $users = DB::table('users')->paginate();
-        $users = User::orderBy('id', 'DESC')->paginate(5);
+        $entidad = Auth::user()->entidad;
+        if($entidad == 'CANTV'){
+            $users = User::orderBy('id', 'ASC')->paginate(5);
+            $dato = Auth::user()->entidad;
+            return view('users.index', compact('users'));
+            }else{
+        $users = User::orderBy('id', 'ASC')->where('entidad',$entidad)->paginate(5);
+        $dato = Auth::user()->entidad;
         return view('users.index', compact('users'));
+        }
     }
 
     /**
@@ -28,7 +39,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        $roles = Role::get();
+        return view('users.create', compact('roles'));
     }
 
     /**
@@ -45,18 +57,47 @@ class UserController extends Controller
             'tlf' => 'required',
             
         ]);
-    
+        
+        $entidad = Auth::user()->entidad;
+        //$user = User::findOrFail($id);
+        //$role = $user->roles;
+        //$nombre_rol = $role->name;
+        if('CANTV' === $entidad){
+
+            $user = new User;
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->tlf = $request->tlf;
+        $user->entidad = $request->entidad;
+        $user->password = "";
+
+        $user->save();
+
+        $user->roles()->sync($request->get('roles'));
+
+
+        return redirect()->route('users.index', $user->id)
+            ->with('info', 'Usuario guardado con éxito');
+
+        }else{
+
         $user = new User;
 
         $user->name = $request->name;
         $user->email = $request->email;
         $user->tlf = $request->tlf;
+        $user->entidad = $user->entidad;
         $user->password = "";
 
         $user->save();
 
+        $user->roles()->sync($request->get('roles'));
 
-        return back()->with('status', 'Usuario Creado con Exito!');  
+
+        return redirect()->route('users.index', $user->id)
+            ->with('info', 'Usuario guardado con éxito');  
+        }
 
     }
 
@@ -68,7 +109,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return User::active()->get();
+        $user = User::findOrFail($id);
+        $roles = $user->roles;
+        return view('users.show', compact('user','roles'));
     }
 
     /**
@@ -81,8 +124,9 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
+        $roles = Role::get();
 
-        return view('users.edit', compact('user'));
+        return view('users.edit', compact('user','roles'));
     }
 
     public function perfil($id){
@@ -99,8 +143,13 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        User::findOrFail($id)->update($request->only('name','email','tlf'));
-        return back()->with('status', 'Editado!!');  
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+
+        $user->roles()->sync($request->get('roles'));
+
+        return redirect()->route('users.index', $user->id)
+            ->with('info', 'Usuario "'.$user->name.'" guardado con éxito.');
     }
 
      public function updatePerfil(Request $request, $id)

@@ -54,7 +54,8 @@ class SolicitarClaveController extends Controller
       if (User::where('email',$email)->exists()) {
 
         $code = $this->generarCodigo(6);
-      $user = User::where('email',$email)->update([
+      $user = User::where('email',$email);
+      $user->update([
               'password' => bcrypt($code)
       ]);
       
@@ -63,10 +64,11 @@ class SolicitarClaveController extends Controller
       DB::table('sessions')->where('user_id',$user_id->id)->delete();
 
 
+
       // ** Correo ** 
       $dates = array('name'=> $request['name'],'code' => $code);
       $this->Email($dates,$email);
-        return redirect()->route('login')->with('info','Tu clave fue enviada al corredo ' . $email.' '.$code);
+        return redirect()->route('login', compact('user'))->with('info','Tu clave fue enviada al corredo ' . $email.' '.$code);
 
       }else{
 

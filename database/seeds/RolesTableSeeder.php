@@ -33,9 +33,10 @@ class RolesTableSeeder extends Seeder
         ]);
 
         Role::create([
-            'name'      => 'user',
-            'slug'      => 'clientes',
-            'description'   => 'Usuario'
+            'name'      => 'users',
+            'slug'      => 'users',
+            'description'   => 'Rol con acceso a la seccion Usuarios'
         ]);
+
     }
 }

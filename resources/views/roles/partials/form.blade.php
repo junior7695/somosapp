@@ -16,6 +16,7 @@
 <div class="form-group">
  	<label class="form-check-label">{{ Form::radio('special', 'all-access') }} Acceso total</label>
  	<label>{{ Form::radio('special', 'no-access') }} Ningún acceso</label>
+ 	<label>{{ Form::radio('special', '') }}Dependiendo del Rol</label>
 </div>
 @endcan
 <hr>
