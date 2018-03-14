@@ -65,9 +65,9 @@ class SolicitarClaveController extends Controller
 
 
 
-      // ** Correo ** 
+      /*// ** Correo ** 
       $dates = array('name'=> $request['name'],'code' => $code);
-      $this->Email($dates,$email);
+      $this->Email($dates,$email);*/
         return redirect()->route('login', compact('user'))->with('info','Tu clave fue enviada al corredo ' . $email.' '.$code);
 
       }else{
@@ -77,12 +77,12 @@ class SolicitarClaveController extends Controller
 
       
     }
-    function Email($dates,$email){
+    /*function Email($dates,$email){
       Mail::send('emails.plantilla',$dates, function($message) use ($email){
         $message->subject('Bienvenido a la plataforma');
         $message->to($email);
         $message->from('no-repply@SomosVenezuela.com.ve','SomosVenezuela');
       });
       
-    }
+    }*/
 }

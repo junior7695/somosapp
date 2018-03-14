@@ -12,8 +12,7 @@
 </div>
 @can('admin')
 <div class="form-group">
-	{{ Form::label('entidad', 'Organización') }}
-	{{ Form::text('entidad', null, ['class' => 'form-control' , 'id' => 'entidad']) }}
+	{{ Form::select('entidad', ['CANTV' => 'Compañía Anónima Nacional Teléfonos de Venezuela (CANTV)', 'SomosVenezuela' => 'Somos Venezuela', 'MPPS' => 'Ministerio del Poder Popular para la Salud (MPPS)', 'MVH' => 'Ministerio del Poder Popular para Hábitat y Vivienda (MVH)', 'CONAPDIS' => 'Consejo Nacional para las Personas con Discapacidad (CONAPDIS)', 'MPPA' => 'Ministerio del Poder Popular para la Alimentación (MPPA)'], 'entidad') }}
 </div>
 @endif
 <hr>
