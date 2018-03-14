@@ -11,6 +11,7 @@
         <h2><strong>Perfil del Usuario</h2>
         <h3>{{ $user->email }}</h3>
         <h3>{{ $user->tlf }}</h3>
+        <h3>{{ $user->entidad }}</h3>
         <hr>
         <table class="table table-bordered table-success">
             <thead class="thead-dark">
