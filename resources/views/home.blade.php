@@ -24,6 +24,9 @@
                     <li><a href="{{ route('users.create') }}"><i class="fas fa-plus mr-2"></i> CREAR</a></li>
                   @endcan
                     <li><a href="{{ route('users.index') }}"><i class="fas fa-eye mr-2"></i>MOSTRAR</a></li>
+                  @can('sessions.index')
+                    <li><a href="{{ route('sessions.index') }}"><i class="fas fa-users mr-2"></i> USUARIOS CONECTADOS</a></li>
+                  @endcan
                 </ul>
             </li>
             @endcan
@@ -40,7 +43,7 @@
                 
             </li>
             <li><a href="{{ route('users.perfil', Auth::user()->id) }}" class="py-3"><i class="fa fa-fw fa-link"></i> PERFIL </a></li>
-            <li><a href="#" class="py-3"><i class="fa fa-fw fa-link"></i> REPORTES </a></li>
+            <li><a href="{{ route('reports.index') }}" class="py-3"><i class="fa fa-fw fa-link"></i> REPORTES </a></li>
             
             
             

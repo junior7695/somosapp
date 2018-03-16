@@ -77,6 +77,12 @@ class PermissionsTableSeeder extends Seeder
 
         //Roles
 
+        Permission::create([
+            'name'          => 'Ver Reportes',
+            'slug'          => 'reports.index',
+            'description'   => 'Podra visualizar reportes de todos los usarios administrativos',      
+        ]);
+
 
     }
 }

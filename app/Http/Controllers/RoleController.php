@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Caffeinated\Shinobi\Models\Role;
 use Caffeinated\Shinobi\Models\Permission;
+use App\User;
+use Illuminate\Support\Facades\Auth;
+use DB;
 
 class RoleController extends Controller
 {
@@ -43,6 +46,15 @@ class RoleController extends Controller
 
         $role->permissions()->sync($request->get('permissions'));
 
+        $id_auth = Auth::user()->id;
+        $auth =  User::findOrFail($id_auth);
+         DB::table('reportes')->insert([
+
+            'reporte' => $auth->name . " (".$auth->email.")      ha CREADO en el sistema el rol:      ". $request->name. " (". $request->description.")",
+            'fecha' => now()
+
+        ]);
+
         return redirect()->route('roles.index', $role->id)
             ->with('info', 'Rol guardado con éxito');
     }
@@ -55,8 +67,8 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-         $role = Role::find($id);
-         $permissions = $role->permissions;
+        $role = Role::find($id);
+        $permissions = $role->permissions;
 
         return view('roles.show', compact('role','permissions'));
     }
@@ -90,6 +102,15 @@ class RoleController extends Controller
 
         $role->permissions()->sync($request->get('permissions'));
 
+        $id_auth = Auth::user()->id;
+        $auth =  User::findOrFail($id_auth);
+        DB::table('reportes')->insert([
+
+            'reporte' => $auth->name . " (".$auth->email.")      ha EDITADO en el sistema el rol:      ". $request->name. " (". $request->description.")",
+            'fecha' => now()
+
+        ]);
+
         return redirect()->route('roles.index', $role->id)
             ->with('info', 'Rol "'.$role->name.'" guardado con éxito.');
     }
@@ -102,7 +123,17 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        $role = Role::find($id)->delete();
+        $role = Role::find($id);
+        
+        $id_auth = Auth::user()->id;
+        $auth =  User::findOrFail($id_auth);
+        DB::table('reportes')->insert([
+
+            'reporte' => $auth->name . " (".$auth->email.")      ha EDITADO en el sistema el rol:      ". $role->name. " (". $role->description.")",
+            'fecha' => now()
+
+        ]);
+        $role->delete();
 
         return back()->with('info', 'Eliminado correctamente');
     }

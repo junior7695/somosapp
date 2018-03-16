@@ -55,7 +55,7 @@ Route::middleware(['auth'])->group(function(){
 	Route::put('users/{user}', 'UserController@update')->name('users.update')
 		->middleware('permission:users.edit');
 
-	Route::get('users/{user}', 'UserController@show')->name('users.show')
+	Route::get('users/{user}/show', 'UserController@show')->name('users.show')
 		->middleware('permission:users.show');
 
 	Route::delete('users/{user}', 'UserController@destroy')->name('users.destroy')
@@ -64,6 +64,14 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('users/{user}/edit', 'UserController@edit')->name('users.edit')
 		->middleware('permission:users.edit');
 
+	Route::get('reports','ReportesController@index')->name('reports.index')->middleware('permission:reports.index');
+
+	// Usuarios Conectados
+	Route::get('sessions', 'SessionController@index')->name('sessions.index')->middleware('permission:sessions.index');
+
+	Route::delete('sessions/{session}', 'SessionController@endsession')->name('sessions.endsession')->middleware('permission:sessions.endsession');
+
+
 });
 
 
@@ -71,4 +79,3 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::get('perfil/{user}/edit', 'UserController@perfil')->name('users.perfil');
 	Route::put('perfil/{user}', 'UserController@updatePerfil')->name('users.updatePerfil');	
-

@@ -20,6 +20,8 @@
             </thead>
             @foreach($users as $user)
             <tbody>
+            @foreach($sessions as $session)
+                @if($session->user_id === $user->id)
                 <tr>
                     <td>{{ $user->id }}</td>
                     <td>{{ $user->name }}</td>
@@ -27,24 +29,18 @@
                     <td>{{ $user->tlf }}</td>
                     <td>{{ $user->entidad }}</td>
                     <td>
-                        <div class="col row">
-                    @can('users.show')
-                        <a href="{{ route('users.show', $user->id) }}" class="btn btn-outline-primary">Ver</a>
-                    @endcan
-                    @can('users.edit')
-                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-outline-warning mr-2 ml-2">Editar</a>
-                    @endcan
-                    @can('users.destroy')
-                        <form action="{{ route('users.destroy', $user->id) }}" method='POST'>
+                        @can('sessions.endsession')
+                            <form action="{{ route('sessions.endsession', $session->user_id) }}" method='POST'>
 
-                        <input class="btn btn-outline-danger" type="submit" value="Eliminar">
+                            <input type="submit" value="Cerrar Sessión">
                         {{ method_field('DELETE') }}
                         {{ csrf_field() }}
                         </form>
-                    @endcan
-                        </div>
+                        @endcan
                     </td>
                 </tr>
+            @endif
+                @endforeach 
             </tbody>
             @endforeach
         </table>
